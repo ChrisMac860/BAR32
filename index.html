@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bar 32</title>
+    <style>
+      /* Colour Palette */
+      :root {
+        --bg: #111111;
+        --gold: #d4af37;
+        --cream: #f5f1da;
+        --green: #3c6e47;
+        --heading-font: "Merriweather", serif;
+        --body-font: "Open Sans", sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--cream);
+        font-family: var(--body-font);
+        line-height: 1.5;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: var(--heading-font);
+        color: var(--gold);
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+      section {
+        padding: 4rem 2rem;
+      }
+      .divider {
+        width: 60px;
+        height: 2px;
+        background: var(--cream);
+        margin: 1rem auto;
+      }
+
+      /* Hero */
+      .hero {
+        position: relative;
+        width: 100%;
+        /* fluid height: min‑300px, ideal 30% of viewport‑width, max‑600px */
+        /* height: clamp(300px, 30vw, 600px);*/
+
+        background-image: url("background.jpg");
+        background-position: 50% 90%; /* keep your bar rail in view */
+        background-size: cover; /* fill container without distortion */
+        background-repeat: no-repeat;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        color: var(--cream);
+      }
+
+      /* Circular logo container */
+      .hero-logo {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 1rem;
+      }
+      .hero-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .hero-tagline {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+        font-family: var(--heading-font);
+        color: var(--cream);
+        text-align: center;
+      }
+      /* About */
+      #about p {
+        max-width: 600px;
+        margin: 0 auto;
+        color: var(--cream);
+        text-align: center;
+      }
+      /* Menu */
+      .menu-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .menu-column ul {
+        list-style: none;
+      }
+      .menu-column li {
+        margin-bottom: 0.5rem;
+        color: var(--cream);
+      }
+      .menu-column li span.price {
+        float: right;
+        color: var(--green);
+      }
+      /* Events */
+      #events table {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        border-collapse: collapse;
+        color: var(--cream);
+      }
+      #events th,
+      #events td {
+        padding: 0.75rem;
+        border-bottom: 1px solid var(--cream);
+      }
+      #events td.date {
+        color: var(--green);
+        width: 120px;
+      }
+      /* Gallery */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .gallery img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .gallery img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      }
+      /* Hours & Contact */
+      #hours table {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto 2rem;
+        border-collapse: collapse;
+        color: var(--cream);
+      }
+      #hours th,
+      #hours td {
+        padding: 0.5rem;
+        border-bottom: 1px solid var(--cream);
+        text-align: left;
+      }
+      .contact {
+        text-align: center;
+        color: var(--cream);
+        margin-bottom: 2rem;
+      }
+      .map {
+        width: 100%;
+        height: 300px;
+        border: none;
+      }
+      /* Footer */
+      footer {
+        padding: 2rem;
+        text-align: center;
+        color: var(--cream);
+      }
+      .social-icons {
+        margin-bottom: 1rem;
+      }
+      .social-icons a {
+        margin: 0 0.5rem;
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background-size: contain;
+      }
+      /* Mobile */
+      @media (max-width: 768px) {
+        .menu-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      h2 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <div class="hero-logo">
+          <img src="logo.jpg" alt="Bar 32 Logo" />
+        </div>
+        <div class="hero-tagline">
+          Welcome to Bar 32 – Traditional Irish Bar
+        </div>
+      </div>
+    </section>
+
+    <div>
+      <!-- About -->
+      <section id="about">
+        <h2>About</h2>
+        <div class="divider"></div>
+        <p>
+          Bar 32 is a traditional Irish bar located in the heart of Torrevieja,
+          Alicante, offering an authentic taste of Ireland with a warm and
+          friendly atmosphere. Known for having the best Guinness in the La
+          Zenia and Torrevieja region, Bar 32 combines classic Irish hospitality
+          with scenic waterfront views and lively entertainment. Whether you're
+          after a relaxed drink, hearty Irish fare, or a night of live music and
+          sports, Bar 32 welcomes you to experience a true Irish pub away from
+          home.
+        </p>
+      </section>
+
+      <!-- Menu -->
+      <section id="menu">
+        <h2>Menu</h2>
+        <div class="divider"></div>
+        <div class="menu-grid">
+          <div class="menu-column">
+            <h3>Food</h3>
+            <ul>
+              <li>Irish Stew</li>
+              <li>Fish & Chips</li>
+              <li>Irish Soda Bread</li>
+              <li>Traditional Irish Breakfast</li>
+              <li>Vegetarian Options Available</li>
+            </ul>
+          </div>
+          <div class="menu-column">
+            <h3>Drinks</h3>
+            <ul>
+              <li>
+                Guinness (Best in La Zenia & Torrevieja)
+                <span class="price">€5.00</span>
+              </li>
+              <li>Jameson Irish Whiskey <span class="price">€6.00</span></li>
+              <li>Irish Coffee <span class="price">€4.50</span></li>
+              <li>Selection of Craft Beers & Spirits</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Events -->
+      <section id="events">
+        <h2>Events</h2>
+        <div class="divider"></div>
+        <table>
+          <tr>
+            <th>Date</th>
+            <th>Event</th>
+          </tr>
+          <tr>
+            <td>Fridays & Saturdays</td>
+            <td>Live Music Nights</td>
+          </tr>
+          <tr>
+            <td>Wednesdays</td>
+            <td>Quiz Night</td>
+          </tr>
+          <tr>
+            <td>All major sports days</td>
+            <td>Sports Viewing</td>
+          </tr>
+          <tr>
+            <td>Special Irish Holidays</td>
+            <td>Festivities & Celebrations</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- Gallery -->
+      <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="divider"></div>
+        <div class="gallery">
+          <img src="interior.jpg" alt="Bar interior" />
+          <img src="beer.jpg" alt="Pint of beer" />
+          <img src="music.png" alt="Live music" />
+          <img src="FOOD.jpg" alt="Traditional food" />
+        </div>
+      </section>
+
+      <!-- Opening Hours & Contact -->
+      <section id="hours">
+        <h2>Opening Hours</h2>
+        <div class="divider"></div>
+        <table>
+          <tr>
+            <th>Day</th>
+            <th>Hours</th>
+          </tr>
+          <tr>
+            <td>Monday</td>
+            <td>Closed</td>
+          </tr>
+          <tr>
+            <td>Tuesday</td>
+            <td>11:00 – 00:00</td>
+          </tr>
+          <tr>
+            <td>Wednesday</td>
+            <td>11:00 – 00:00</td>
+          </tr>
+          <tr>
+            <td>Thursday</td>
+            <td>11:00 – 00:00</td>
+          </tr>
+          <tr>
+            <td>Friday</td>
+            <td>11:00 – 00:00</td>
+          </tr>
+          <tr>
+            <td>Saturday</td>
+            <td>11:00 – 00:00</td>
+          </tr>
+          <tr>
+            <td>Sunday</td>
+            <td>11:00 – 00:00</td>
+          </tr>
+        </table>
+      </section>
+      <div class="contact">
+        <p>
+          Av. Dr. Gregorio Marañón, 55, 03185 Torrevieja, Alicante, Spain<br />Tel:
+          +34 604 49 98 64<br />Email: info@bar32.co.uk
+        </p>
+      </div>
+      <div style="max-width: 800px; margin: 0 auto; padding: 1rem">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3145.18949644099!2d-0.6964738241071747!3d37.97270677193622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd63075812147841%3A0xd5739a0e31051965!2sBAR%2032!5e0!3m2!1sen!2suk!4v1753911368433!5m2!1sen!2suk"
+          width="100%"
+          height="450"
+          style="border: 0; display: block"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        >
+        </iframe>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+      <div class="social-icons">
+        <a href="#" class="icon-facebook" title="Facebook"></a>
+        <a href="#" class="icon-instagram" title="Instagram"></a>
+      </div>
+      <p>© 2025 Bar 32. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
